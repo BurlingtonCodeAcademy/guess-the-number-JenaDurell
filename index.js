@@ -22,30 +22,33 @@ async function startCompGuessNum() {
   let high = 100
   let low = 1
 
+
+  //start of game guess count
+  let guessCount = 0
+
   //computer's guess
   // let computerGuess = randomNum(low, high)
-  let computerGuess = Math.floor((high-low)/2) + low
+  let computerGuess = Math.floor((high - low) / 2) + low
   //myAnswer is Y or N
   let myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
+  guessCount++
 
 
-
-
-   while (myAnswer.toLowerCase() === 'n') {
+  while (myAnswer.toLowerCase() === 'n') {
     let highLow = await ask('Is it higher (h) or lower (l)?')
     if (highLow.toLowerCase() === 'h') {
       low = computerGuess + 1;
     } else if (highLow.toLowerCase() === 'l') {
       high = computerGuess - 1
     }
-    computerGuess = Math.floor((high-low)/2) + low
+    computerGuess = Math.floor((high - low) / 2) + low
     myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
-
+    guessCount++
   }
   //correct guess answered
   if (myAnswer.toLowerCase() === 'y') {
 
-    console.log('Yes! You win!')
+    console.log(`Yes! I got you number and it only took ${guessCount} guess mothefucker!`)
 
     process.exit();
 
