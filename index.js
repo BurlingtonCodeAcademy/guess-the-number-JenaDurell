@@ -10,6 +10,8 @@ function ask(questionText) {
 function randomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
+
+
 //computer guesses number
 startCompGuessNum();
 
@@ -64,6 +66,8 @@ function lowCheatTest(compGuess,limit) {
       low = computerGuess + 1;
     } else if (highLow.toLowerCase() === 'l' && lowCheatTest(computerGuess,low)) {
       high = computerGuess - 1
+    } else if (highLow.toLowerCase() !== 'h' && high.toLowerCase() !== 'l') {
+      console.log("I'm sorry, what?!?!?")
     }
     computerGuess = Math.floor((high - low) / 2) + low
     myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
