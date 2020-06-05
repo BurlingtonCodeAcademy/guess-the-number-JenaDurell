@@ -35,12 +35,34 @@ async function startCompGuessNum() {
   let myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
   guessCount++
 
+
+  //Cheat detector guessing above
+function highCheatTest(compGuess,limit) {
+  if (compGuess>=limit){
+    console.log(`But you said it was lower than ${limit}! I don't play with cheaters, goodbye!`)
+    process.exit()
+  } else {
+    return true
+  }
+}
+
+// Cheat detector guessing below 
+function lowCheatTest(compGuess,limit) {
+  if (compGuess<=limit) {
+    console.log(`But you said it was lower than ${limit}! I don't play with cheaters, goodbye!`)
+    process.exit()
+  } else {
+    return true
+  }
+}
+
+
   //wrong guess answered
   while (myAnswer.toLowerCase() === 'n') {
     let highLow = await ask('Is it higher (h) or lower (l)?')
-    if (highLow.toLowerCase() === 'h') {
+    if (highLow.toLowerCase() === 'h' && highCheatTest(computerGuess,high)) {
       low = computerGuess + 1;
-    } else if (highLow.toLowerCase() === 'l') {
+    } else if (highLow.toLowerCase() === 'l' && lowCheatTest(computerGuess,low)) {
       high = computerGuess - 1
     }
     computerGuess = Math.floor((high - low) / 2) + low
