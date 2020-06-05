@@ -14,13 +14,15 @@ function randomNum(min, max) {
 startCompGuessNum();
 
 async function startCompGuessNum() {
-  console.log("Let's play a game where you (human) make up a number and I (computer) try to guess it.")
+  //range
+  let high = (process.argv[2] || 100)
+  let low = 1
+
+  console.log("Let's play a game where you (human) think up a number and I (computer) try to guess it.")
+  console.log(`Please think of a number between 1 and ${high} (inclusive).`)
   let secretNumber = await ask("What is your secret number?\nI won't peek, I promise...\n");
   console.log('You entered: ' + secretNumber);
 
-  //range
-  let high = 100
-  let low = 1
 
 
   //start of game guess count
@@ -33,7 +35,7 @@ async function startCompGuessNum() {
   let myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
   guessCount++
 
-//wrong guess answered
+  //wrong guess answered
   while (myAnswer.toLowerCase() === 'n') {
     let highLow = await ask('Is it higher (h) or lower (l)?')
     if (highLow.toLowerCase() === 'h') {
@@ -47,8 +49,8 @@ async function startCompGuessNum() {
   }
   //correct guess answered
   if (myAnswer.toLowerCase() === 'y') {
-//console.log using ternary operator
-    console.log(guessCount>1? `Yes! I got you number and it only took ${guessCount} guesses mothefucker!` : `Yes! I got you number and it only took ${guessCount} guess mothefucker!`)
+    //console.log using ternary operator
+    console.log(guessCount > 1 ? `Yes! I got you number and it only took ${guessCount} guesses motherfucker!` : `Yes! I got you number and it only took ${guessCount} guess mothefucker!`)
 
     process.exit();
 
