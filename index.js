@@ -49,8 +49,8 @@ async function startCompGuessNum() {
   }
   //correct guess answered
   if (myAnswer.toLowerCase() === 'y') {
-    //console.log using ternary operator
-    console.log(guessCount > 1 ? `Yes! I got you number and it only took ${guessCount} guesses motherfucker!` : `Yes! I got you number and it only took ${guessCount} guess mothefucker!`)
+    //console.log using ternary operator for correct tenses
+    console.log(`Yes! I got you number and it only took ${guessCount} guess${guessCount>1?"es": ""} buddy!`)
 
     process.exit();
 
