@@ -33,7 +33,7 @@ async function startCompGuessNum() {
   let myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
   guessCount++
 
-
+//wrong guess answered
   while (myAnswer.toLowerCase() === 'n') {
     let highLow = await ask('Is it higher (h) or lower (l)?')
     if (highLow.toLowerCase() === 'h') {
@@ -47,8 +47,8 @@ async function startCompGuessNum() {
   }
   //correct guess answered
   if (myAnswer.toLowerCase() === 'y') {
-
-    console.log(`Yes! I got you number and it only took ${guessCount} guess mothefucker!`)
+//console.log using ternary operator
+    console.log(guessCount>1? `Yes! I got you number and it only took ${guessCount} guesses mothefucker!` : `Yes! I got you number and it only took ${guessCount} guess mothefucker!`)
 
     process.exit();
 
