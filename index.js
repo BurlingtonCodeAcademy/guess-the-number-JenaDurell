@@ -38,10 +38,11 @@ async function startCompGuessNum() {
     } else if (highLow.toLowerCase() === 'l') {
       high = computerGuess - 1
     }
-    computerGuess = randomNum(low, high)
+    computerGuess = Math.floor((high-low)/2) + low
     myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
 
   }
+  //correct guess answered
   if (myAnswer.toLowerCase() === 'y') {
 
     console.log('Yes! You win!')
