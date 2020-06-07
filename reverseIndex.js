@@ -27,7 +27,7 @@ async function startHumGuessNum() {
     //start of game guess count
     let guessCount = 0
 
-    let myGuess = await ask("what do you think it could be? ")
+    let myGuess = await ask("What do you think it could be? ")
     myGuess = parseInt(myGuess)
     guessCount++
 
@@ -37,10 +37,10 @@ async function startHumGuessNum() {
         myGuess = parseInt(myGuess)
         //console.log using ternary operator for correct tenses
         console.log(`Yes! You got my number and it only took ${guessCount} guess${guessCount > 1 ? "es" : ""}! Strong work, Wise One!`)
+    }
 
-    } while (myGuess != secretNumber) {
+    while (myGuess != secretNumber) {
         //wrong guess answered and it's too high
-        console.log(typeof myGuess)
         if (myGuess > secretNumber) {
             console.log(`Nope! ${myGuess} is too high! `)
             myGuess = await ask("what do you think it could be? ")
@@ -48,11 +48,11 @@ async function startHumGuessNum() {
             //wrong guess answered and it's too low        
         } else {
             console.log(`Nope! ${myGuess} is too low! `)
-            myGuess = await ask("what do you think it could be? ")
+            myGuess = await ask("What do you think it could be? ")
             myGuess = parseInt(myGuess)
         }
         guessCount++
     }
     console.log(`Yes! You got my number and it only took ${guessCount} guess${guessCount > 1 ? "es" : ""}! Strong work, Wise One!`)
-
+    process.exit()
 }
