@@ -41,7 +41,7 @@ async function startCompGuessNum() {
   //Cheat detector guessing above
 function highCheatTest(compGuess,limit) {
   if (compGuess>=limit){
-    console.log(`But you said it was lower than ${limit}! I don't play with cheaters, goodbye!`)
+    console.log(`But you said it was lower than ${parseInt(limit + 1)}! I don't play with cheaters, goodbye!`)
     process.exit()
   } else {
     return true
@@ -51,7 +51,7 @@ function highCheatTest(compGuess,limit) {
 // Cheat detector guessing below 
 function lowCheatTest(compGuess,limit) {
   if (compGuess<=limit) {
-    console.log(`But you said it was lower than ${limit}! I don't play with cheaters, goodbye!`)
+    console.log(`But you said it was higher than ${parseInt(limit-1)}! I don't play with cheaters, goodbye!`)
     process.exit()
   } else {
     return true

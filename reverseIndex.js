@@ -20,7 +20,7 @@ async function startHumGuessNum() {
 
     console.log("Let's play a game where I (computer) think up a number and you (human) try to guess it.")
     console.log(`I will think of a number between 1 and ${high} (inclusive).`)
-    let secretNumber = randomNum(high, low)
+    let secretNumber = randomNum(low, high)
 
     console.log(secretNumber)
 
