@@ -87,12 +87,12 @@ async function startCompGuessNum() {
   if (myAnswer.toLowerCase() === 'y') {
     //console.log using ternary operator for correct tenses
     console.log(`Yes! I got you number and it only took ${guessCount} guess${guessCount > 1 ? "es" : ""} buddy! \n \n`)
-
+//begin Human guess game
     startHumGuessNum();
   }
 
 }
-
+//Human guess game
 async function startHumGuessNum() {
   //range
   let high = (process.argv[2] || 100)
@@ -134,5 +134,7 @@ async function startHumGuessNum() {
       guessCount++
   }
   console.log(`Yes! You got my number and it only took ${guessCount} guess${guessCount > 1 ? "es" : ""}! Strong work, Wise One!\n \n`);
+
+  //Begin Computer guess game
   startCompGuessNum();
 }
