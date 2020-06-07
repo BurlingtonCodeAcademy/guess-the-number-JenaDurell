@@ -1,7 +1,7 @@
 const readline = require('readline');
 const rl = readline.createInterface(process.stdin, process.stdout);
 
-
+const humGuess = require('./humguess')
 //choosing which game to play first
 
 gameChoice()
