@@ -1,5 +1,12 @@
 # Guess The Number
+## Fork coded by: Jena Durell
 
+ - Imported functions from ask.js file in order to help with refactoring, see https://www.stanleyulili.com/node/node-modules-learn-how-to-import-and-use-functions-from-another-file/
+
+ - Attempted to use imported functions for each separate game as well, but encountered circular dependency errors despite multiple attempts to fix them. 
+
+ - Reverted back to single file (index.js) for the game, able to successfully import ask.js into game.
+---
 Before starting to code this project, please find a partner and play this game together verbally for a few rounds.
 
 1. Alice thinks of a number
