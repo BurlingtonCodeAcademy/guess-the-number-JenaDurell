@@ -1,3 +1,5 @@
+//humGuess and ask import
+const lib = require('./ask')
 //computer guesses number
 async function startCompGuessNum() {
     //range
@@ -7,7 +9,7 @@ async function startCompGuessNum() {
   
     console.log(`Let's play a game where you (human) think up a number and I (computer) try to guess it. \nPlease think of a number between 1 and ${high} (inclusive).`)
     let questionText = "What is your secret number?\nI won't peek, I promise...\n"
-    let secretNumber = await ask(questionText);
+    let secretNumber = await lib.ask(questionText);
     console.log('You entered: ' + secretNumber);
   
     //start of game guess count
@@ -15,7 +17,7 @@ async function startCompGuessNum() {
       //computer guess
     let computerGuess = Math.floor((high - low) / 2) + low
     //myAnswer is Y or N
-    let myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
+    let myAnswer = await lib.ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
     guessCount++
   
   
@@ -39,7 +41,7 @@ async function startCompGuessNum() {
     }
       //wrong guess answered
     while (myAnswer.toLowerCase() === 'n') {
-      let highLow = await ask('Is it higher (h) or lower (l)?')
+      let highLow = await lib.ask('Is it higher (h) or lower (l)?')
       if (highLow.toLowerCase() === 'h' && highCheatTest(computerGuess, high)) {
         low = computerGuess + 1;
       } else if (highLow.toLowerCase() === 'l' && lowCheatTest(computerGuess, low)) {
@@ -48,7 +50,7 @@ async function startCompGuessNum() {
         console.log("I'm sorry, what?!?!?")
       }
       computerGuess = Math.floor((high - low) / 2) + low
-      myAnswer = await ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
+      myAnswer = await lib.ask(`Is it ${computerGuess}, yes (y) or no (n)?`)
       guessCount++
     }
     //correct guess answered
@@ -57,7 +59,9 @@ async function startCompGuessNum() {
       console.log(`Yes! I got you number and it only took ${guessCount} guess${guessCount > 1 ? "es" : ""} buddy! \n \n`)
 
   //begin Human guess game
-      startHumGuessNum();
+      lib.newGame('hum')
     }
   
   }
+//share file within project
+  module.exports = {startCompGuessNum};
